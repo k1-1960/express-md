@@ -1,0 +1,68 @@
+<script type="text/javascript" charset="utf-8">
+function removeTags(str) {
+    if ((str===null) || (str===''))
+        return false;
+    else
+        str = str.toString();
+          
+    // Regular expression to identify HTML tags in 
+    // the input string. Replacing the identified 
+    // HTML tag with a null string.
+    return str.replace( /(<([^>]+)>)/ig, '');
+}
+    
+function copy(id_elemento) {
+  let docv = document.getElementById(id_elemento).innerHTML.replace(new RegExp('&nbsp;', 'g'), ' ');
+  
+  let docvc = `${removeTags(docv)}`;
+  navigator.clipboard.writeText(docvc);
+}
+
+
+let urlBg = document.getElementById('bg');
+let fontColor = document.getElementById('font-color');
+const body = document.getElementById('body');
+
+let url = `url({{baseUrl}}${urlBg.value})`;
+
+if (urlBg.value.startsWith('#')) url = urlBg.value;
+if (urlBg.value.startsWith('http')) url = `url(${urlBg.value})`;
+
+body.innerHTML = body.innerHTML + `
+  <style>
+  * ${fontColor && fontColor.value ? `{
+    color: ${fontColor.value}
+  }` : '{}'}
+    body {
+      background: ${url};
+      background-attachment: fixed;
+      background-position: center center;
+    }
+  </style>
+  `;
+  
+let codeB = document.querySelector(".code-block");
+let lines = codeB.innerHTML.split('\n');
+
+for (let line in lines) {
+  if (lines[line].length < 1) continue;
+  let matches = lines[line].match(/\'[A-Z?a-z?0-9+&@#%?=~_|!:\-,.;\/]*\'/g);
+  if (matches) for (let m of matches) {
+    lines[line] = lines[line].replace(new RegExp(m, 'ig'), `<i style="color: aqua;">${m}</i>`);
+  }
+}
+codeB.innerHTML = lines.join('\n');
+
+codeB.innerHTML = codeB.innerHTML.replace(/const&nbsp;/g, '<i style="color: aqua;">const&nbsp;</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/import&nbsp;/g, '<i style="color: pink;">import&nbsp;</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/&nbsp;from&nbsp;/g, '<i style="color: pink;">&nbsp;from&nbsp;</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/if/g, '<i style="color: yellow;">if</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/require/g, '<i style="color: yellow;">require</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/=&gt;/g, '<i style="color: #ffbf00;">=&gt;</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/&nbsp;&gt;/g, '<i style="color: #770000;">&nbsp;&gt;</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/ = /g, '<i style="color: aqua;"> = </i>')
+codeB.innerHTML = codeB.innerHTML.replace(/\({/g, '<i style="color: #770000;">({</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/}\)/g, '<i style="color: #770000;">})</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/}/g, '<i style="color: #770000;">}</i>');
+codeB.innerHTML = codeB.innerHTML.replace(/{/g, '<i style="color: #770000;">{</i>');
+</script>

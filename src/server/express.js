@@ -4,7 +4,7 @@ import { engine } from 'express-handlebars';
 const app = express();
 
 app.set('views-md', 'src/views');
-app.set('views', 'src/views/.c');
+app.set('views', 'src/views-hbs');
 app.use('/_static', express.static('src/_static'))
 app.engine('.hbs', engine({
   extname: '.hbs'
@@ -15,11 +15,9 @@ expressmd(app, {
 });
 
 app.get('*', (req, res) => {
-  res
-  .status(200)
+  res.status(200)
   .md('home', {
-    title: 'XD XD',
-    na: 'aaaa'
+    title: 'My page.'
   });
 });
 

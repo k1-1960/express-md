@@ -1,17 +1,24 @@
-[bg] #2E7D32
-[font-color] white
-# Hola
-## Holaaaaa
+[bg] #000
 
-> $ npm i express-md
+# express-markdown
+> Convert md files to html text.
+install:
+> $ npm i express-markdown
 
+## How to use.
+example of an index.
 +++
-const express = require('express');
+import express from 'express';
+import expressmd from 'express-markdown';
+
 const app = express();
+expressmd(app);
 
 app.get('/', (req, res) => {
-  res.send('XD');
+  res.md('my-md-file', {
+    title: 'My new page'
+  });
 });
 
-app.listen(3030, () => console.log('Listening port 3030.'));
+app.listen(3030);
 ---

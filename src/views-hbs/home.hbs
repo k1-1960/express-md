@@ -1,0 +1,24 @@
+<input type="text" id="bg" style="display: none;" value="#000">
+<br>
+<h1>express-markdown</h1>
+<div class="mq p">Convert md files to html text.</div class="mq p">
+<p>install:</p>
+<div class="mq p">$ npm i express-markdown</div class="mq p">
+<br>
+<h2>How to use.</h2>
+<p>example&nbsp;of&nbsp;an&nbsp;index.</p>
+<div class="code-block" onclick="copy(47)" id="47">
+<p>import&nbsp;express&nbsp;from&nbsp;'express';</p>
+<p>import&nbsp;expressmd&nbsp;from&nbsp;'express-markdown';</p>
+<br>
+<p>const&nbsp;app&nbsp;=&nbsp;express();</p>
+<p>expressmd(app);</p>
+<br>
+<p>app.get('/',&nbsp;(req,&nbsp;res)&nbsp;=>&nbsp;{</p>
+<p>&nbsp;res.md('my-md-file',&nbsp;{</p>
+<p>&nbsp;title:&nbsp;'My&nbsp;new&nbsp;page'</p>
+<p>&nbsp;});</p>
+<p>});</p>
+<br>
+<p>app.listen(3030);</p>
+</div>
