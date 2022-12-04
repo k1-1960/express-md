@@ -1,7 +1,11 @@
 {
   "name": "express-markdown",
-  "description": "An express plugin made for convert .md files to html text.",
+  "description": "A plugin for express made to convert .md files to html text.",
   "type": "module",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "nodemon src/index.js"
+  },
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",

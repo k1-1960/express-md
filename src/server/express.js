@@ -5,14 +5,22 @@ const app = express();
 
 app.set('views-md', 'src/views');
 app.set('views', 'src/views/.c');
+app.use('/_static', express.static('src/_static'))
 app.engine('.hbs', engine({
   extname: '.hbs'
 }));
 app.set('view engine', '.hbs');
-expressmd(app);
+expressmd(app, {
+  baseUrl: 'http://localhost:3030'
+});
 
 app.get('*', (req, res) => {
-  res.md('home');
+  res
+  .status(200)
+  .md('home', {
+    title: 'XD XD',
+    na: 'aaaa'
+  });
 });
 
 app.listen(3030);

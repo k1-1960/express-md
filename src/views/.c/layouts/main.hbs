@@ -1,46 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css" media="all">
-      .mq {
-        border-left-color: rgba(225, 225, 225, 1);
-        border-left-style: solid;
-        border-left-width: 7.5px;
-        padding-left: 15px;
-        filter: brightness(0.5);
-        line-height: auto;
-      }
-      
-      .p {
-        font-size: 16px;
-      }
-      
-      .code-block {
-        backdrop-filter: brightness(0);
-        border-radius: 3.1415px;
-      }
-    </style>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>{{{title}}}</title>
-  </head>
-  <body>
-    {{{body}}}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css" media="all">
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+    body {
+      font-family: Helvetica;
+      width: 100vw;
+      height: 100vh;
+    }
+    .mq {
+      font-family: Monospace;
+      width: 90%;
+      border-left-color: rgba(225, 225, 225, 1);
+      border-left-style: solid;
+      border-left-width: 7.5px;
+      padding-left: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-top-right-radius: 0.3em;
+      border-bottom-right-radius: 0.3em;
+      backdrop-filter: brightness(0.5);
+      line-height: auto;
+    }
+
+    .p {
+      font-size: 16px;
+    }
+
+    .code-block {
+      width: 90%;
+      padding: 10px;
+      word-wrap: break-word;
+      font-family: 'Fira Code', monospace;
+      background-color: #282A36;
+      border-radius: 3.1415px;
+    }
     
-    
-    <script type="text/javascript" charset="utf-8">
-      let codeB = document.querySelector(".code-block");
-      
-      console.log(codeB.innerHTML);
-      
-      codeB.innerHTML = codeB.innerHTML.replace(/const/g, '<i style="color: aqua;">const</i>');
-      codeB.innerHTML = codeB.innerHTML.replace(/ = /g, '<i style="color: aqua;"> = </i>')
-      codeB.innerHTML = codeB.innerHTML.replace(/ =&gt; /g, '<i style="color: #ffbf00;"> =&gt; </i>');
-      codeB.innerHTML = codeB.innerHTML.replace(/ &gt; /g, '<i style="color: #770000;"> &gt; </i>');
-      codeB.innerHTML = codeB.innerHTML.replace(/{/g, '<i style="color: #770000;">{</i>');
-      codeB.innerHTML = codeB.innerHTML.replace(/}/g, '<i style="color: #770000;">}</i>');
-      codeB.innerHTML = codeB.innerHTML.replace(/\./g, '<i style="color: yellow; padding-left: 1px; padding-right: 1px;">.</i>');
-      codeB.innerHTML = codeB.innerHTML.replace(/\,/g, '<i style="color: yellow; padding-left: 1px; padding-right: 1px;">,</i>');
-    </script>
-  </body>
+    .code-block p {
+      margin-bottom: 1px;
+      margin-top: 1px;
+    }
+  </style>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{{{title}}}</title>
+</head>
+<body id="body" class="background-url">
+{{{body}}}
+
+
+  {{>expressmd}}
+</body>
 </html>
