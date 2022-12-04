@@ -19,8 +19,8 @@ function copy(id_elemento) {
 }
 
 
-let urlBg = document.getElementById('bg');
-let fontColor = document.getElementById('font-color');
+let urlBg = document.getElementById('bg') || { value: '#000' };
+let fontColor = document.getElementById('font-color') || { value: 'white' };
 const body = document.getElementById('body');
 
 let url = `url({{baseUrl}}${urlBg.value})`;
